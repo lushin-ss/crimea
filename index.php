@@ -1,7 +1,16 @@
 <?php
 include_once 'blocks/cookie.php'; //подключаем cookie
 ?>
-<?php 
+<?php
+$host="localhost";
+$user="sa";
+$password="siski";
+$db="crimea";
+mysql_connect($host, $user, $password) or die("MySQL сервер недоступен!".mysql_error());
+mysql_select_db($db) or die("Нет соединения с БД".mysql_error());
+?>
+
+<?php
 include_once 'blocks/head.php'; //подключаем голову со стилями и title
 ?>
 	<body>
