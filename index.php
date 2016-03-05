@@ -5,13 +5,11 @@ include_once 'blocks/cookie.php'; //подключаем cookie
 include_once 'blocks/head.php'; //подключаем голову со стилями и title
 ?>
 	<body>
-		
+	<!-- давайте посмотрим на ГИт -->
 		<!-- Content -->
 			<div id="content">
 				<div class="inner">
 
-		               
-				
 		<?php
 				include 'blocks/getUsers.php';
 				
