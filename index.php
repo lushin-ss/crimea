@@ -2,12 +2,8 @@
 include_once 'blocks/cookie.php'; //подключаем cookie
 ?>
 <?php
-$host="localhost";
-$user="sa";
-$password="siski";
-$db="crimea";
-mysql_connect($host, $user, $password) or die("MySQL сервер недоступен!".mysql_error());
-mysql_select_db($db) or die("Нет соединения с БД".mysql_error());
+// подключаемся к БД
+include_once 'blocks/select.php';
 ?>
 
 <?php
@@ -25,10 +21,14 @@ include_once 'blocks/head.php'; //подключаем голову со сти�
 		?>		
 				
 		<?php 
-			include 'page/post1.php'; // подключаем первую новость
+		//	include 'page/post1.php'; // подключаем первую новость
 		?>			
 		<?php 
-			include 'page/post1.php'; // подключаем 2-ю новость, как первую.
+			include 'page/post2.php'; 
+			// подключаем 2-ю новость,.
+			// печатаем новость из таблицы public БД
+	
+
 		?>	
 		<?php 
 			include 'blocks/pagination.php'; //Pagination это кнопки, переключения между постами (страница 1,2,) и т.д. пусть побудут пока
