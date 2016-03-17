@@ -1,52 +1,26 @@
 ﻿<?php //подключение функции загрузки информации о странице, почему-то не работает
 				include 'blocks/loadPage.php';
 		
+			$menu=[ // создаем массив меню (это пока понятно)
+                ['title'=>'Главная', 'link'=>'/', 'level'=>2],
+                ['title'=>'Номера', 'link'=>'#intro', 'level'=>2, 
+                    'children'=>[
+                        ['title'=>'3-х местные', 'link'=>'#three', level=>2],
+                        ['title'=>'4-х местные', 'link'=>'for', 'level'=>2],
+                        ['title'=>'2-х комнатные', 'link'=>'two', 'level'=>2]
+                    ]
+                ],
+                ['title'=>'Цены', 'link'=>'price'],
+				['title'=>'Бронирование', 'link'=>'forms'],
+				['title'=>'Отдых с детьми', 'link'=>'price-1'],
+				['title'=>'Питание', 'link'=>'food'],
+				['title'=>'Контакты', 'link'=>'/?page=contacts'],
+				['title'=>'Отзывы', 'link'=>'index_test.php'],
+				['title'=>'тест1', 'link'=>'test1.php'],
+			];
 		
-//первая функция соединения с БД
-function db_connect ()
-	   {
-    $link = mysql_connect("test.tkudina.com.ua", "sa", "siski")
-        or die("Could not connect : " . mysql_error());
-  //  print "Подключение к серверу прошло успешно";
-    mysql_select_db("crimea", $link) or die("Не могу выбрать базу данных");
-
-    /* Выполняем SQL-запрос */
- 	//меню
-	
-	return $link;
-	
-	   }
-//2-я 
-function get_menu ()
-{
-	db_connect ();
-    $resultMenu = mysql_query("SELECT * FROM menu WHERE menu.parent='0'") or die("запрос неудачен : " . mysql_error());
-	while ($row = mysql_fetch_array ($resultMenu))
-	{
-		$res_array [$count] = $row;
-		$count++; //счетчик
-	}
-		return $res_array;
-}	  
-//3-я
-/*
-function get_submenu ($parent)
-{
-	db_connect ();
-    $resultMenu = mysql_query("SELECT * FROM menu WHERE menu.parent='$parent'") or die("запрос неудачен : " . mysql_error());
-	while ($row = mysql_fetch_array ($resultMenu))
-	{
-		$res_array [$count] = $row;
-		$count++; //счетчик
-	}
-		return $res_array;
-}
-*/
-$menu = get_menu ();
- 		
-//echo printMenu($menu, 0);		
 			// создаем массив классов // массив классов для разных уровней иерархии (насколько правильно так делать? ведь если брать его из БД, то количество уровней неизвестно? и его луше задать переменной?)
-//			$classes = [ 0=> 'menu', 'submenu' , 'third-level'];
+			$classes = [ 0=> 'menu', 'submenu' , 'third-level'];
 			
 			// в лоб печатаем меню
 			
@@ -94,6 +68,6 @@ $menu = get_menu ();
 			// возвращаем результат
 			return $html;
             }
-       echo printMenu($menu, 0);   
+          
 			
 	?>

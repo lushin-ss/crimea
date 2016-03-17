@@ -2,11 +2,8 @@
 include_once 'blocks/cookie.php'; //подключаем cookie
 ?>
 <?php
-// подключаемся к БД (пока убрал. там вывод таблицы пользователей)
-//include_once 'blocks/select.php';
-
-//хотим меню из бд
-
+// подключаемся к БД
+include_once 'blocks/select.php';
 ?>
 
 <?php
@@ -48,9 +45,8 @@ include_once 'blocks/head.php'; //подключаем голову со сти�
 				include 'blocks/search.php';
 				?>							
 				<?php
-				include 'blocks/menu_new.php';
-				//include_once 'blocks/bd_menu.php';
-				
+				include 'blocks/menu.php';
+				echo printMenu($menu, 0);
 				?>
             
 		<!-- Text -->
